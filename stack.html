@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stack Using linkedlst</title>
+</head>
+<body>
+<script>
+class Stacklist
+{
+	constructor()
+	{
+		this.data=0;
+		this.link=null;
+	}
+}
+
+
+class stacklist
+{
+	constructor()
+	{
+		this.top=null;
+	}
+	
+	
+	push(data)
+	{
+		
+		let temp = new Stacklist();
+
+		if (temp == null) {
+			document.write("<br> Overflow");
+			return;
+		}
+
+		
+		temp.data = data;
+                temp.link = this.top;
+                this.top = temp;
+	}
+	
+	isEmpty()
+	{
+		return this.top == null;
+	}
+	
+	peek()
+	{
+		
+		if (!this.isEmpty()) {
+			return this.top.data;
+		}
+		else {
+			document.write("Stack is empty<br>");
+			return -1;
+		}
+	}
+	
+	
+	pop() 
+	{
+		
+		if (this.top == null) {
+			document.write("<br> Underflow");
+			return;
+		}
+
+		
+		this.top = this.top.link;
+	}
+	
+	display()
+	{
+		if (this.top == null) {
+			document.write("<br> Underflow");
+			
+		}
+		else {
+			let temp = this.top;
+			while (temp != null) {
+
+				document.write(temp.data+"->");
+
+				temp = temp.link;
+			}
+		}
+	}
+}
+let stack = new stacklist();
+
+stack.push(14);
+stack.push(25);
+stack.push(75);
+stack.push(68);
+stack.display();
+document.write("<br>Top element is ", stack.peek()+"<br>");
+stack.pop();
+stack.pop();
+stack.display();
+document.write("<br>Top element is ", stack.peek()+"<br>");
+</script>
+</body>
+</html>
